@@ -22,16 +22,29 @@
       <div class="collapse navbar-collapse" id="navbarColor03">
         <ul class="navbar-nav me-auto">
           <li class="nav-item">
-            <a class="nav-link active" href="{% url 'register' %}">create
+            <a class="nav-link active" href="{% url 'register' %}">Create User
               <span class="visually-hidden">(current)</span>
             </a>
           </li>
+          {% if request.user.is_authenticated %}
+          <li class="nav-item">
+            <a class="nav-link active" href="{% url 'logout' %}">logout
+              <span class="visually-hidden">(current)</span>
+            </a>
+          </li>
+          {% else %}
+          <li class="nav-item">
+            <a class="nav-link active" href="{% url 'login' %}">login
+              <span class="visually-hidden">(current)</span>
+            </a>
+          </li>
+          {% endif %}
 
 
         </ul>
-        <form class="d-flex">
-          <input class="form-control me-sm-2" type="search" placeholder="Search">
-          <button class="btn btn-secondary my-2 my-sm-0" type="submit">Search</button>
+        <form class="d-flex" role="search" method="GET">
+          <input class="form-control me-2" type="search" placeholder="Search" aria-label="Search" name="qs">
+          <button class="btn btn-outline-success" type="submit" id='search'>Search</button>
         </form>
       </div>
     </div>

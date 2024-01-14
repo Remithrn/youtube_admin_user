@@ -14,7 +14,15 @@
            
            {% endif %}
 
+           {% if user.is_superuser %}
+           <h4 class="card-title">IS A SUPERUSER</h4>
+           {% else %}
+           {% endif %}
+
           <p class="card-text"><a href="{% url 'delete' user.id %}" class="btn btn-danger">delete</a></p>
+          <p class="card-text"><a href="{% url 'edit_user' user.id %}" class="btn btn-info">edit</a></p>
+         
+          
         </div>
       </div>
 </div>
